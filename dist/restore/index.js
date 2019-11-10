@@ -2192,9 +2192,10 @@ function setOutputAndState(key, cacheResult) {
 exports.setOutputAndState = setOutputAndState;
 function getCacheState() {
     const stateData = core.getState(constants_1.State.CacheResult);
-    stateData['scope'] = 'testscope';
     core.debug(`State: ${stateData}`);
-    return (stateData && JSON.parse(stateData));
+    const response = (stateData && JSON.parse(stateData));
+    response.scope = 'testscope';
+    return response;
 }
 exports.getCacheState = getCacheState;
 function setCacheState(state) {
