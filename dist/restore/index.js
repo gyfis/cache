@@ -2194,7 +2194,9 @@ function getCacheState() {
     const stateData = core.getState(constants_1.State.CacheResult);
     core.debug(`State: ${stateData}`);
     const response = (stateData && JSON.parse(stateData));
-    response.scope = 'testscope';
+    if (!!response) {
+        response.scope = 'testscope';
+    }
     return response;
 }
 exports.getCacheState = getCacheState;

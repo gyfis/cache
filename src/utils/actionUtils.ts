@@ -63,7 +63,9 @@ export function getCacheState(): ArtifactCacheEntry | undefined {
     const stateData = core.getState(State.CacheResult);
     core.debug(`State: ${stateData}`);
     const response = (stateData && JSON.parse(stateData)) as ArtifactCacheEntry
-    response.scope = 'testscope'
+    if (!!response) {
+      response.scope = 'testscope'
+    }
     return response;
 }
 

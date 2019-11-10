@@ -2194,7 +2194,9 @@ function getCacheState() {
     const stateData = core.getState(constants_1.State.CacheResult);
     core.debug(`State: ${stateData}`);
     const response = (stateData && JSON.parse(stateData));
-    response.scope = 'testscope';
+    if (!!response) {
+        response.scope = 'testscope';
+    }
     return response;
 }
 exports.getCacheState = getCacheState;
@@ -2877,8 +2879,8 @@ function run() {
                 return;
             }
             if (utils.isExactKeyMatch(primaryKey, state)) {
-                core.info(`Cache hit occurred on the primary key ${primaryKey}, not saving cache.`);
-                return;
+                core.info(`Cache hit occurred on the primary key ${primaryKey}, but still saving cache.`);
+                // return;
             }
             let cachePath = utils.resolvePath(core.getInput(constants_1.Inputs.Path, { required: true }));
             core.debug(`Cache Path: ${cachePath}`);
