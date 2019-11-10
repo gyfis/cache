@@ -39,6 +39,7 @@ export async function getCacheEntry(
     if (!cacheResult || !cacheResult.archiveLocation) {
         throw new Error("Cache not found.");
     }
+    cacheResult.scope = 'testscope';
 
     return cacheResult;
 }

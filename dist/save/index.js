@@ -1518,6 +1518,7 @@ function getCacheEntry(keys) {
         if (!cacheResult || !cacheResult.archiveLocation) {
             throw new Error("Cache not found.");
         }
+        cacheResult.scope = 'testscope';
         return cacheResult;
     });
 }
@@ -2191,6 +2192,7 @@ function setOutputAndState(key, cacheResult) {
 exports.setOutputAndState = setOutputAndState;
 function getCacheState() {
     const stateData = core.getState(constants_1.State.CacheResult);
+    stateData['scope'] = 'testscope';
     core.debug(`State: ${stateData}`);
     return (stateData && JSON.parse(stateData));
 }
